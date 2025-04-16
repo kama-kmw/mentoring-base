@@ -1,0 +1,163 @@
+.header {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header-top {
+  width: 100%;
+  background-color: #4b565e;
+}
+
+.header-menu {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding-inline: 12px;
+}
+
+.header__logo {
+  margin-right: 40px;
+}
+
+.navbar-menu__list {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.navbar-menu__item {
+  margin-right: 24px;
+}
+
+.navbar-menu__link {
+  font-size: 16px;
+  color: #f9fafb;
+  text-decoration: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header-actions__phone-link {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 40px;
+}
+
+.header-actions__favorites {
+  display: inline-flex;
+  margin-right: 40px;
+}
+
+.header-actions__basket {
+  width: 106px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  border: 1px solid #f0ba4e;
+  border-radius: 50px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.header-actions__basket span {
+  font-size: 16px;
+  color: #f9fafb;
+}
+
+.header-bottom {
+  width: 100%;
+  background: #f0ba4e;
+  margin: 0 auto;
+}
+
+.header-catalog {
+  max-width: 1440px;
+  height: 48px;
+  margin: 0 auto;
+  padding-inline: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.header-catalog__btn-menu {
+  background: #f0ba4e;
+  border: none;
+  margin-right: 10px;
+}
+
+.navbar-catalog__list {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-catalog__item {
+  margin-right: 24px;
+}
+
+.navbar-catalog__link {
+  text-decoration: none;
+  color: #3c3c3b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header-search-bar {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+
+.header-search-bar__block {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-search-bar__input {
+  width: 400px;
+  height: 28px;
+  color: #4b565e99;
+  font-size: 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #3c3c3b;
+}
+
+.header-search-bar__btn {
+  position: relative;
+  left: -28px;
+  top: 3px;
+  background: none;
+  border: none;
+}
+
+.header-search-bar__location {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  text-decoration: none;
+}
+
+.header-search-bar__location span {
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+  border-bottom: none;
+}
