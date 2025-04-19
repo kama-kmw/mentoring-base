@@ -1,5 +1,23 @@
 * {
   font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
 }
 
 @mixin container-styles {
@@ -12,6 +30,9 @@
   @include container-styles;
 }
 
+/*--------------------------------------------------------------
+# Hero Header
+--------------------------------------------------------------*/
 .header {
   max-width: 1920px;
   margin: 0px auto;
@@ -35,7 +56,6 @@
 .navbar-menu__list {
   display: flex;
   align-items: center;
-  list-style-type: none;
   padding-left: 0px;
 }
 
@@ -108,7 +128,6 @@
 }
 
 .navbar-catalog__list {
-  list-style-type: none;
   padding-left: 0px;
   display: flex;
   align-items: center;
@@ -180,4 +199,218 @@
   img {
     max-width: 100%;
   }
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.services {
+  max-width: 1920px;
+  margin: 0px auto;
+  padding-top: 31px;
+  background: rgb(251, 251, 251);
+  padding-bottom: 150px;
+}
+
+.services-top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 28px;
+}
+
+.services-item {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.services-item__title {
+  font-weight: 500;
+  font-size: 18px;
+  color: #3c3c3b;
+}
+
+.services-item__description {
+  margin: 0px;
+  font-size: 18px;
+  color: #a1a0a0;
+
+  span {
+    color: #3c3c3b;
+  }
+}
+
+.services-bottom {
+  width: 100%;
+  margin-top: 28px;
+}
+
+.services-pagination {
+  display: flex;
+  justify-content: end;
+  column-gap: 16px;
+}
+
+.services-pagination__link {
+  font-weight: 400;
+  font-size: 16px;
+  color: #a1a0a0;
+  text-decoration: none;
+}
+
+.services-pagination .active {
+  color: #f0ba4e;
+}
+.services-content {
+  margin-top: 16px;
+}
+
+.services-content__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 400px;
+  gap: 28px;
+  grid-template-areas:
+    "tool enamel dye-color"
+    "tool foam sockets";
+}
+
+.services-content__item {
+  background: rgb(255, 255, 255);
+  box-sizing: border-box;
+  padding: 16px 16px 0 16px;
+}
+
+.services-content__item_tool {
+  display: flex;
+  flex-direction: column;
+  grid-area: tool;
+  height: 428px;
+  overflow: hidden;
+
+  .services-content__title {
+    grid-area: title;
+  }
+
+  .services-content__img {
+    grid-area: img;
+    position: relative;
+    max-height: 292px;
+    top: 55px;
+    right: 30px;
+    align-self: flex-start;
+  }
+
+  .services-content__link {
+    grid-area: link;
+    align-self: end;
+    margin-bottom: 0px;
+    position: relative;
+  }
+}
+
+.services-content__item_enamel {
+  grid-area: enamel;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 279px 1fr;
+
+  .services-content__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .services-content__title {
+      text-align: right;
+    }
+  }
+}
+
+.services-content__item_foam {
+  grid-area: foam;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 200px;
+
+  .services-content__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.services-content__item_dye-color {
+  grid-area: dye-color;
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "link img";
+  grid-template-rows: 68px 1fr;
+  height: 200px;
+
+  .services-content__title {
+    grid-area: title;
+  }
+
+  .services-content__img {
+    grid-area: img;
+    position: relative;
+    height: 160px;
+    top: -43px;
+  }
+
+  .services-content__link {
+    grid-area: link;
+    align-self: end;
+    margin-bottom: 0px;
+    position: relative;
+    top: -60px;
+  }
+}
+
+.services-content__item_sockets {
+  grid-area: sockets;
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "img link";
+  height: 200px;
+
+  .services-content__title {
+    grid-area: title;
+  }
+
+  .services-content__img {
+    grid-area: img;
+    position: relative;
+    top: 12px;
+  }
+
+  .services-content__link {
+    grid-area: link;
+    align-self: end;
+  }
+}
+
+.services-content__title {
+  font-size: 28px;
+  font-weight: 600;
+}
+.services-content__link {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 16px;
+}
+
+.services-content__link span {
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 400;
+  color: #3c3c3b;
+}
+
+.services-content__img {
+  max-width: 100%;
 }
