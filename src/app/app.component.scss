@@ -1,6 +1,17 @@
 * {
   font-family: "Inter", sans-serif;
 }
+
+@mixin container-styles {
+  max-width: 1440px;
+  margin: 0px auto;
+  padding-inline: 12px;
+}
+
+.container {
+  @include container-styles;
+}
+
 .header {
   max-width: 1920px;
   margin: 0px auto;
@@ -12,12 +23,9 @@
 }
 
 .header-menu {
-  max-width: 1440px;
-  margin: 0px auto;
   display: flex;
   align-items: center;
   height: 80px;
-  padding-inline: 12px;
 }
 
 .header__logo {
@@ -88,10 +96,7 @@
 }
 
 .header-catalog {
-  max-width: 1440px;
   height: 48px;
-  margin: 0px auto;
-  padding-inline: 12px;
   display: flex;
   align-items: center;
 }
