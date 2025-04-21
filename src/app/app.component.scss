@@ -14,6 +14,11 @@ a {
 
 ul {
   list-style-type: none;
+  padding-left: 0;
+}
+
+p {
+  margin: 0;
 }
 
 :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
@@ -202,14 +207,13 @@ ul {
 }
 
 /*--------------------------------------------------------------
-# Hero Section
+# Services Section
 --------------------------------------------------------------*/
 .services {
   max-width: 1920px;
   margin: 0px auto;
   padding-top: 31px;
   background: rgb(251, 251, 251);
-  padding-bottom: 150px;
 }
 
 .services-top {
@@ -280,6 +284,7 @@ ul {
   background: rgb(255, 255, 255);
   box-sizing: border-box;
   padding: 16px 16px 0 16px;
+  box-shadow: 0px 20px 50px 0px rgba(60, 60, 59, 0.07);
 }
 
 .services-content__item_tool {
@@ -413,4 +418,228 @@ ul {
 
 .services-content__img {
   max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Popular Section
+--------------------------------------------------------------*/
+.popular {
+  max-width: 1920px;
+  margin: 0px auto;
+  padding-top: 76px;
+  background: rgb(251, 251, 251);
+  position: relative;
+  z-index: 4;
+}
+
+.popular-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popular-top__title {
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
+
+.popular-top__link {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(240, 186, 78, 1);
+}
+.popular-bottom {
+  margin-top: 28px;
+}
+.popular-card__list {
+  display: grid;
+  grid-template-columns: 309px 309px 309px 309px;
+  column-gap: 28px;
+  justify-content: space-between;
+
+  position: relative;
+  &::after {
+    content: url(../assets/icons/arrow-left-icon.svg);
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: -15px;
+    z-index: 5;
+  }
+
+  &::before {
+    content: url(../assets/icons/arrow-right-icon.svg);
+    position: absolute;
+    top: 50%;
+    transform: translate(50%, -50%);
+    right: -15px;
+    z-index: 5;
+  }
+}
+
+.popular-card__item {
+  display: grid;
+  max-height: 429px;
+  grid-template-rows: 180px 1fr;
+  row-gap: 30px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 3;
+  box-shadow: 0px 20px 50px 0px rgba(18, 17, 39, 0.08);
+
+}
+
+.popular-card__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popular-card__labels {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+}
+
+.popular-card__new {
+  width: 109px;
+  padding: 10px 20px;
+  border-radius: 54px;
+
+  color: rgba(255, 255, 255, 1);
+  background: rgba(8, 199, 133, 1);
+}
+
+.popular-card__btn-discount {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.popular-card__btn-favorites {
+  display: flex;
+  background: none;
+  border: none;
+  color: rgba(60, 60, 59, 1);
+  position: relative;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.popular-card__body {
+  position: relative;
+}
+
+.popular-card__img {
+  position: absolute;
+  z-index: -1;
+}
+
+.popular-card__info {
+  position: relative;
+  top: -20px;
+}
+
+.popular-card__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(60, 60, 59, 1);
+}
+
+.popular-card__articul {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(60, 60, 59, 1);
+  margin-top: 8px;
+}
+
+.popular-card__price-unit {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(161, 160, 160, 1);
+  margin-top: 20px;
+}
+
+.popular-card__price-block {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.popular-card__price-old {
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(60, 60, 59, 1);
+  
+}
+
+.popular-card__price-current {
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(60, 60, 59, 1);
+}
+
+.popular-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.popular-card__counter p {
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(60, 60, 59, 1);
+}
+
+.popular-card__control {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.popular-card__quantity {
+  display: flex;
+  gap: 16px;
+}
+
+.popular-card__quantity-minus {
+  font-weight: 400;
+  font-size: 16px;
+  border: none;
+  background: none;
+  color: rgba(60, 60, 59, 1);
+  padding: 0;
+}
+
+.popular-card__quantit-value {
+  width: 10px;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(60, 60, 59, 1);
+}
+
+.popular-card__quantity-plus {
+  font-weight: 400;
+  font-size: 16px;
+  border: none;
+  background: none;
+  color: rgba(60, 60, 59, 1);
+}
+
+.popular-card__basket-btn {
+  width: 135px;
+  padding: 14px 28px;
+  background: none;
+  border: 1px solid rgba(240, 186, 78, 1);
+  border-radius: 54px;
+  white-space: nowrap;
+  color: rgba(60, 60, 59, 1);
+  font-weight: 500;
+  font-size: 16px;
 }
