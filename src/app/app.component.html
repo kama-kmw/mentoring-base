@@ -9,15 +9,15 @@
         <nav class="navbar-menu">
           <ul class="navbar-menu__list">
             <li class="navbar-menu__item">
-              <a href="" class="navbar-menu__link">{{headerNavLink1}}</a>
+              <a href="" class="navbar-menu__link">{{ headerNavLink1 }}</a>
             </li>
 
             <li class="navbar-menu__item">
-              <a href="" class="navbar-menu__link">{{headerNavLink2}}</a>
+              <a href="" class="navbar-menu__link">{{ aboutCompany }}</a>
             </li>
 
             <li class="navbar-menu__item">
-              <a href="" class="navbar-menu__link">{{headerNavLink3}}</a>
+              <a href="" class="navbar-menu__link">{{ headerNavLink3 }}</a>
             </li>
           </ul>
         </nav>
@@ -47,22 +47,11 @@
         <button class="header-catalog__btn-menu" type="button">
           <img src="../assets/icons/menu-icon.svg" alt="" />
         </button>
+
         <nav class="navbar-catalog">
           <ul class="navbar-catalog__list">
-            <li class="navbar-catalog__item">
-              <a href="" class="navbar-catalog__link">{{headerSubNavLink1}}</a>
-            </li>
-            <li class="navbar-catalog__item">
-              <a href="" class="navbar-catalog__link">{{headerSubNavLink2}}</a>
-            </li>
-            <li class="navbar-catalog__item">
-              <a href="" class="navbar-catalog__link">{{headerSubNavLink3}}</a>
-            </li>
-            <li class="navbar-catalog__item">
-              <a href="" class="navbar-catalog__link">{{headerSubNavLink4}}</a>
-            </li>
-            <li class="navbar-catalog__item">
-              <a href="" class="navbar-catalog__link">{{headerSubNavLink5}}</a>
+            <li class="navbar-catalog__item" *ngFor="let item of menuItems">
+              <a href="" class="navbar-catalog__link">{{ item }}</a>
             </li>
           </ul>
         </nav>
@@ -85,14 +74,20 @@
           </a>
         </div>
       </div>
+      
+      <button (click)="changeMenuText()">Изменить размер текста</button>
     </div>
   </div>
 </header>
 
 <main class="content">
   <section class="hero">
-    <img src="../assets/img/banner.png" alt="" />
+    <img src="../assets/img/banner.png" alt="" *ngIf="isShowBanner" />
   </section>
+
+  <button (click)="isShowBanner = !isShowBanner">
+    Показать / Скрыть Банер
+  </button>
 
   <section class="services">
     <div class="container">
@@ -139,11 +134,12 @@
 
       <div class="services-bottom">
         <div class="services-pagination">
-          <a href="#" class="services-pagination__link active">1</a>
-          <a href="#" class="services-pagination__link">2</a>
-          <a href="#" class="services-pagination__link">3</a>
-          <a href="#" class="services-pagination__link">4</a>
-          <a href="#" class="services-pagination__link">5</a>
+          <a
+            href="#"
+            class="services-pagination__link active"
+            *ngFor="let item of newPages"
+            >{{ item }}</a
+          >
         </div>
 
         <div class="services-content">
