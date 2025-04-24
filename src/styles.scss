@@ -10,7 +10,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
+html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -350,4 +350,27 @@ template {
 
 [hidden] {
   display: none;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+p {
+  margin: 0;
 }
