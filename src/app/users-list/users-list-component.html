@@ -1,0 +1,10 @@
+Компонет списка
+<div style="display: flex; gap: 5px">
+  <div
+    *ngFor="let item of users"
+    style="width: 200px; height: 200px; border: 1px solid red"
+  >
+    {{$any(item).name}}
+    <button (click)="deleteUser(item.id)">Удалить юзера</button>
+  </div>
+</div>
