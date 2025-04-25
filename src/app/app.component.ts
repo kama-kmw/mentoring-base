@@ -26,7 +26,7 @@ const menuElements = [
 })
 export class AppComponent {
   title = 'mentoring-first-project';
-  
+
   isShowBanner = true;
 
   readonly headerNavLink1 = 'Главная';

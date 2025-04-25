@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Injectable } from '@angular/core';
 
+
 const showItemMenu = (item: string) => {
   return item;
 };
@@ -22,7 +23,7 @@ const menuElements = [
   standalone: true,
   imports: [NgFor],
 })
-export class headerComponent {
+export class HeaderComponent {
   readonly headerNavLink1 = 'Главная';
   readonly headerNavLink2 = 'О компании';
   readonly headerNavLink3 = 'Каталог';
