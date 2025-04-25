@@ -6,8 +6,8 @@ const apiService = 'dsdsdsd';
 
 @Component({
   selector: 'app-users-list',
-  templateUrl: './users-list-component.html',
-  styleUrl: './usets-list-component.scss',
+  templateUrl: './users-list.component.html',
+  styleUrl: './usets-list.component.scss',
   standalone: true,
   imports: [NgFor],
 })
