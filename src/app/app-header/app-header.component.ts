@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Injectable } from '@angular/core';
-
+import { RouterLink } from '@angular/router';
 
 const showItemMenu = (item: string) => {
   return item;
@@ -21,7 +21,7 @@ const menuElements = [
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, RouterLink],
 })
 export class HeaderComponent {
   readonly headerNavLink1 = 'Главная';

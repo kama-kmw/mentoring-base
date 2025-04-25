@@ -4,7 +4,6 @@ import { HeaderComponent } from './app-header/app-header.component';
 import { UserComponent } from './app-user/app-user.component';
 
 export const routes: Routes = [
- 
   {
     path: 'users',
     component: UsersListComponent,

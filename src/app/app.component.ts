@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 const showItemMenu = (item: string) => {
   return item;
@@ -20,7 +21,7 @@ const menuElements = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgFor],
+  imports: [RouterOutlet, NgIf, NgFor, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
