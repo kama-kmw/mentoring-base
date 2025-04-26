@@ -20,7 +20,6 @@ export class UsersListComponent {
     this.apiService
       .get('https://jsonplaceholder.typicode.com/users')
       .subscribe((response: any) => {
-        console.log(response);
         this.users = response;
       });
   }
