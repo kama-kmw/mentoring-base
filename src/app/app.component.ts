@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { HeaderComponent } from './app-header/app-header.component';
 
 const showItemMenu = (item: string) => {
   return item;
@@ -21,7 +22,7 @@ const menuElements = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgFor, RouterLink],
+  imports: [RouterOutlet, NgIf, NgFor, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

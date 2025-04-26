@@ -1,8 +1,9 @@
 import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Injectable } from '@angular/core';
-
-const apiService = 'dsdsdsd';
+import { User } from './users-list.interface';
+import { RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -13,20 +14,19 @@ const apiService = 'dsdsdsd';
 })
 export class UsersListComponent {
   readonly apiService = inject(HttpClient);
-  users: any = [];
+  users: User[] = [];
 
   constructor() {
     this.apiService
       .get('https://jsonplaceholder.typicode.com/users')
       .subscribe((response: any) => {
+        console.log(response);
         this.users = response;
-        console.log('Users:', this.users);
       });
   }
 
   deleteUser(id: number) {
-    // this.users = this.users.filter((item: any) => item.id !== id);
-    this.users = this.users.filter((item: any) => {
+    this.users = this.users.filter((item) => {
       if (id === item.id) {
         return false;
       } else {

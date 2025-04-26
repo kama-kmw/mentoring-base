@@ -1,10 +1,13 @@
-Компонет списка
-<div style="display: flex; gap: 5px">
-  <div
-    *ngFor="let item of users"
-    style="width: 200px; height: 200px; border: 1px solid red"
-  >
-    {{ $any(item).name }}
-    <button (click)="deleteUser(item.id)">Удалить юзера</button>
+<section class="card">
+  <div class="card-inner">
+    <div class="card__item" *ngFor="let item of users">
+      <h4 class="card__title">{{ item.name }}</h4>
+      <p class="card___desc">{{ item.email }}</p>
+      <p class="card__street">{{ item.address.street }}</p>
+
+      <button class="card__btn" (click)="deleteUser(item.id)">
+        Удалить юзера
+      </button>
+    </div>
   </div>
-</div>
+</section>

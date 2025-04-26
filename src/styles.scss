@@ -314,6 +314,16 @@ textarea {
   font: inherit; /* 2 */
 }
 
+@mixin container-styles {
+  max-width: 1440px;
+  margin: 0px auto;
+  padding-inline: 12px;
+}
+
+.container {
+  @include container-styles;
+}
+
 /* Interactive
    ========================================================================== */
 
