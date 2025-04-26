@@ -246,12 +246,14 @@ let task6 = arrayUsers.reverse();
 // седьмая
 let task7 = arrayUsers.length;
 // восьмая
-let task8 = arrayUsers
-  .reduce((acc, el) => [...acc, el.website.includes(".com") ? el : null], [])
-  .filter((item) => Boolean(item));
+let task8 = arrayUsers.reduce(
+  (acc, el) => [...acc, el.website.includes(".com") ? el : null],
+  []
+);
 // девятая
-let task9 = arrayUsers
-  .reduce((acc, el) => [...acc, el.username.length > 12 ? el : null], [])
-  .filter((el) => Boolean(el));
+let task9 = arrayUsers.reduce(
+  (acc, el) => [...acc, el.username.length > 12 ? el : null],
+  []
+);
 // десятая
 let task10 = arrayUsers.map((el) => el.username.toLowerCase());

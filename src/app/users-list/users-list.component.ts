@@ -18,19 +18,13 @@ export class UsersListComponent {
 
   constructor() {
     this.apiService
-      .get('https://jsonplaceholder.typicode.com/users')
-      .subscribe((response: any) => {
+      .get<User[]>('https://jsonplaceholder.typicode.com/users')
+      .subscribe((response: User[]) => {
         this.users = response;
       });
   }
 
   deleteUser(id: number) {
-    this.users = this.users.filter((item) => {
-      if (id === item.id) {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    this.users = this.users.filter((item: User) => id !== item.id);
   }
 }
