@@ -20,18 +20,12 @@ export class UsersListComponent {
     this.apiService
       .get('https://jsonplaceholder.typicode.com/users')
       .subscribe((response: any) => {
-        console.log(response);
+        console.log(response)
         this.users = response;
       });
   }
 
   deleteUser(id: number) {
-    this.users = this.users.filter((item) => {
-      if (id === item.id) {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    this.users = this.users.filter((item: User) => id !== item.id);
   }
 }
