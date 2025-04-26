@@ -1,9 +1,8 @@
 <section class="card">
   <div class="card-inner">
     <div class="card__item" *ngFor="let item of users">
-      <h4 class="card__title">{{ item.name }}</h4>
-      <p class="card___desc">{{ item.email }}</p>
-      <p class="card__street">{{ item.address.street }}</p>
+      
+      <app-user-card [user]="item"></app-user-card>
 
       <button class="card__btn" (click)="deleteUser(item.id)">
         Удалить юзера
