@@ -1,4 +1,4 @@
-.card__item {
+.task__item {
   width: 250px;
   height: 300px;
   background: #ffffff;
@@ -9,21 +9,25 @@
   flex-direction: column;
   justify-content: space-between;
   border-radius: 10px;
-  align-items: center;
+  gap: 5px;
+  align-items: start;
+  border: 1px solid #333333;
 }
 
-.card__title {
+.task__title {
   font-size: 18px;
+  font-weight: bold;
 }
 
-.card___desc {
+.task___desc {
   color: gray;
 }
 
-.card__btn {
+.task__btn {
   height: 50px;
-  border-radius: 30px;
-  border: 1px solid #f0ba4e;
-  background: none;
+  border-radius: 10px;
+  border: 1px solid #807373;
+  background: #ede9e9;
   padding: 10px 20px;
+  cursor: pointer;
 }

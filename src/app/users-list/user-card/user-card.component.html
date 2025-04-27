@@ -1,5 +1,10 @@
-<h1>Карточки</h1>
-<h4 class="card__title">{{ user.name }}</h4>
-<p class="card___desc">{{ user.email }}</p>
-<p class="card___user-name">{{ user.username }}</p>
-<p class="card__street">{{ user.address.street }}</p>
+<div class="card__item">
+  <h1>Карточки</h1>
+  <h4 class="card__title">{{ user.name }}</h4>
+  <p class="card___desc">{{ user.email }}</p>
+  <p class="card___user-name">{{ user.username }}</p>
+  <p class="card__street">{{ user.address.street }}</p>
+  <button class="card__btn" (click)="onDeleteUser(user.id)">
+    Удалить юзера
+  </button>
+</div>

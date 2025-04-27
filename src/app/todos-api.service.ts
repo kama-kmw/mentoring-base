@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { User } from './users-list/users-list.interface';
+import { Todos } from './todos-list/todos-list.interface';
 
 @Injectable({ providedIn: 'root' })
-export class UsersApiService {
+export class TodosApiService {
   readonly apiService = inject(HttpClient);
 
-  getUsers() {
-    return this.apiService.get<User[]>(
-      'https://jsonplaceholder.typicode.com/users'
+  getTodos() {
+    return this.apiService.get<Todos[]>(
+      'https://jsonplaceholder.typicode.com/todos'
     );
   }
 }
-
