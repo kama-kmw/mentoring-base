@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TodosApiService } from '../todos-api.service';
-import { Todos } from './todos-list.interface';
+import { Todo } from './todos-list.interface';
 import { NgFor } from '@angular/common';
 import { TodosCardComponent } from './todos-card/todos-card.component';
 
@@ -13,11 +13,11 @@ import { TodosCardComponent } from './todos-card/todos-card.component';
 })
 export class TodosListComponent {
   readonly todosApiService = inject(TodosApiService);
-  todos: Todos[] = [];
+  todos: Todo[] = [];
 
   constructor() {
-    this.todosApiService.getTodos().subscribe((response: Todos[]) => {
-      this.todos = response.map((todo) => ({
+    this.todosApiService.getTodos().subscribe((response: Todo[]) => {
+      this.todos = response.map((todo: Todo) => ({
         ...todo,
         completedText: todo.completed ? 'да' : 'нет',
       }));
@@ -25,6 +25,6 @@ export class TodosListComponent {
   }
 
   deleteTodo(id: number) {
-    this.todos = this.todos.filter((item) => id !== item.id);
+    this.todos = this.todos.filter((todo: Todo) => id !== todo.id);
   }
 }
