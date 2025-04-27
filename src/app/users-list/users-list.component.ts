@@ -19,18 +19,12 @@ export class UsersListComponent {
   users: User[] = [];
 
   constructor() {
-    this.usersApiService.getUsers().subscribe((response: any) => {
+    this.usersApiService.getUsers().subscribe((response: User[]) => {
       this.users = response;
     });
   }
 
   deleteUser(id: number) {
-    this.users = this.users.filter((item) => {
-      if (id === item.id) {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    this.users = this.users.filter((item) => id !== item.id);
   }
 }

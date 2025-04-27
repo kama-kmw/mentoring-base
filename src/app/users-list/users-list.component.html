@@ -1,10 +1,10 @@
 <section class="card">
   <div class="card-inner">
-    <div class="card__item" *ngFor="let item of users">
+    <div class="card__item" *ngFor="let user of users">
       
-      <app-user-card [user]="item"></app-user-card>
+      <app-user-card [user]="user"></app-user-card>
 
-      <button class="card__btn" (click)="deleteUser(item.id)">
+      <button class="card__btn" (click)="deleteUser(user.id)">
         Удалить юзера
       </button>
     </div>
