@@ -1,6 +1,6 @@
 <section class="card">
   <div class="card-inner">
-    <div *ngFor="let todo of todoService.todosSubject | async">
+    <div *ngFor="let todo of todoService.todos | async">
       <app-todos-card
         [todo]="todo"
         (deleteTodo)="deleteTodo($event)"

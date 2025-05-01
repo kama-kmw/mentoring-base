@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Todo } from './todos-list/todos-list.interface';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TodosService {
-  todosSubject = new BehaviorSubject<Todo[]>([]);
+  private todosSubject = new BehaviorSubject<Todo[]>([]);
+  public todos: Observable<Todo[]> = this.todosSubject.asObservable();
 
   setTodos(todos: Todo[]) {
     this.todosSubject.next(todos);
