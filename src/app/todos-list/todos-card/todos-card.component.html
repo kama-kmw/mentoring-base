@@ -4,7 +4,9 @@
   <p>АВТОР ЗАДАЧИ</p>
   <p class="task___id">{{ todo.userId }}</p>
   <p>ЗАДАЧА ЗАВЕРШЕНА</p>
-  <p class="task__street">{{ todo.completedText }}</p>
+  <p class="task__street">
+    {{ todo.completed ? "да" : "нет" }}
+  </p>
   <button class="task__btn" (click)="onDeleteTodo(todo.id)">
     УДАЛИТЬ ЗАДАЧУ
   </button>
