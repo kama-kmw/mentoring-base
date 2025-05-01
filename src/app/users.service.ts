@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private usersSubject = new BehaviorSubject<User[]>([]);
-  public users: Observable<User[]> = this.usersSubject.asObservable();
+  public users$: Observable<User[]> = this.usersSubject.asObservable();
 
   setUsers(users: User[]) {
     this.usersSubject.next(users);
