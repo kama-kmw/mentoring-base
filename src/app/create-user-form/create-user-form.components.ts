@@ -17,6 +17,7 @@ import {
 export class CreateUserFormComponent {
   @Output()
   createUser = new EventEmitter();
+  
   public form = new FormGroup({
     name: new FormControl('hello world', [
       Validators.required,
@@ -32,6 +33,6 @@ export class CreateUserFormComponent {
 
   public submitForm() {
     this.createUser.emit(this.form.value);
-    this.form.reset();
+    this.form.reset(); 
   }
 }
