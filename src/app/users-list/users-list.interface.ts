@@ -1,10 +1,10 @@
 export interface User {
   id: number;
   name: string;
-  username: string;
+  username?: string;
   email: string;
-  address: {
-    street: string;
+  address?: {
+    street?: string;
     suit: string;
     city: string;
     zipcode: number;
@@ -13,11 +13,12 @@ export interface User {
       lng: string;
     };
   };
-  phone: string;
+  phone?: string;
   website: string;
   company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
+    name?: string;
+    catchPhrase?: string;
+    bs?: string;
   };
+  companyName?: string;
 }
