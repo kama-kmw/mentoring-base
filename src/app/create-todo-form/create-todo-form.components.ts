@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CreateTodo } from './create-todo-form.interfase';
 
 @Component({
   selector: 'app-create-todo-form',
@@ -16,16 +17,29 @@ import {
 })
 export class CreateTodoFormComponent {
   @Output()
-  createTodo = new EventEmitter();
+  createTodo = new EventEmitter<CreateTodo>();
 
   public form = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    userId: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    title: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(2)],
+      nonNullable: true,
+    }),
+    userId: new FormControl<number | null>(null, {
+      validators: [Validators.required, Validators.min(1)],
+    }),
+
     completed: new FormControl(false, { nonNullable: true }),
   });
 
   public submitForm() {
-    this.createTodo.emit(this.form.value);
-    this.form.reset();
+    if (this.form.valid) {
+      const formData = this.form.getRawValue();
+      this.createTodo.emit({
+        title: formData.title,
+        userId: Number(this.form.value.userId),
+        completed: formData.completed,
+      });
+      this.form.reset();
+    }
   }
 }

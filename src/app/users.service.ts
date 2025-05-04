@@ -24,10 +24,12 @@ export class UsersService {
       (el: User) => el.email === user.email
     );
 
-    existingUser !== undefined
-      ? alert('такой email уже есть')
-      : (this.usersSubject.next([...this.usersSubject.value, user]),
-        alert('новый user успешно добавлен'));
+    if (existingUser !== undefined) {
+      alert('такой email уже есть');
+    } else {
+      this.usersSubject.next([...this.usersSubject.value, user]),
+        alert('новый user успешно добавлен');
+    }
   }
 
   deleteUser(id: number) {

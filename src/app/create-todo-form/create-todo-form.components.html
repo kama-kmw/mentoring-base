@@ -1,8 +1,8 @@
-<h1 class="form-title">Добавить задачу</h1>
+<h1 class="form__title">Добавить задачу</h1>
 <div class="form-section">
-  <form [formGroup]="form" (ngSubmit)="submitForm()">
-    <p>Текст задачи</p>
-    <input type="text" formControlName="title" />
+  <form [formGroup]="form" class="form__todo" (ngSubmit)="submitForm()">
+    <p class="form__label">Текст задачи</p>
+    <input type="text" class="form__input" formControlName="title" />
     <div
     *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)" class="alert"
   >
@@ -11,14 +11,15 @@
     </div>
   </div>
 
-    <p>Автор задачи</p>
-    <input type="text" formControlName="userId" />
+    <p class="form__label">Автор задачи</p>
+    <input type="text" class="form__input" formControlName="userId" />
 
-    <p>ЗАДАЧА ЗАВЕРШЕНА</p>
+    <p class="form__label">ЗАДАЧА ЗАВЕРШЕНА</p>
     <select formControlName="completed" class="gustom-select">
-      <option [value]="true">Да</option>
-      <option [value]="false">Нет</option>
+      <option class="option" [value]="true">Да</option>
+      <option class="option" [value]="false">Нет</option>
     </select>
+    
     <button type="submit" class="form__btn" [disabled]="form.invalid">
       СОЗДАТЬ ЗАДАЧУ
     </button>

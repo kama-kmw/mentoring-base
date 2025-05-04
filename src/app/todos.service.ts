@@ -24,10 +24,12 @@ export class TodosService {
       (el: Todo) => el.title === todo.title
     );
 
-    existingTodo !== undefined
-      ? alert('такая задача уже есть')
-      : (this.todosSubject.next([...this.todosSubject.value, todo]),
-        alert('задача добавлена'));
+    if (existingTodo !== undefined) {
+      alert('такая задача уже есть');
+    } else {
+      this.todosSubject.next([...this.todosSubject.value, todo]),
+        alert('задача добавлена');
+    }
   }
 
   deleteTodo(id: number) {

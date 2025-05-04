@@ -1,29 +1,28 @@
 <h1 class="form__title">Добавить карточку</h1>
 <div class="form-section">
-  <div class="form" [formGroup]="form" (ngSubmit)="submitForm()">
-    <form>
-      <p>NAME</p>
-      <input type="text" formControlName="name" />
-      <div
-        *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="alert"
-      >
-        <div *ngIf="form.controls['name'].errors" style="color: red">
-          Введите коректное имя
-        </div>
+  <form class="form__user" [formGroup]="form" (ngSubmit)="submitForm()">
+    <p class="form__label">NAME</p>
+    <input type="text" class="form__input" formControlName="name" />
+    <div
+      *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+      class="alert"
+    >
+      <div *ngIf="form.controls['name'].errors" style="color: red">
+        Введите коректное имя
       </div>
+    </div>
 
-      <p>EMAIL</p>
-      <input type="text" formControlName="email" />
+    <p class="form__label">EMAIL</p>
+    <input type="text" class="form__input" formControlName="email" />
 
-      <p>WEBSITE</p>
-      <input type="text" formControlName="website" />
+    <p class="form__label">WEBSITE</p>
+    <input type="text" class="form__input" formControlName="website" />
 
-      <p>COMPANY-NAME</p>
-      <input type="text" formControlName="companyName" />
+    <p class="form__label">COMPANY-NAME</p>
+    <input type="text" class="form__input" formControlName="companyName" />
 
-      <button type="submit" class="form__btn" [disabled]="form.invalid">
-        CREATE USER
-      </button>
-    </form>
-  </div>
-</div> 
+    <button type="submit" class="form__btn" [disabled]="form.invalid">
+      CREATE USER
+    </button>
+  </form>
+</div>

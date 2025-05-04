@@ -5,6 +5,7 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { TodosCardComponent } from './todos-card/todos-card.component';
 import { TodosService } from '../todos.service';
 import { CreateTodoFormComponent } from '../create-todo-form/create-todo-form.components';
+import { CreateTodo } from '../create-todo-form/create-todo-form.interfase';
 
 @Component({
   selector: 'app-todos-list',
@@ -28,7 +29,7 @@ export class TodosListComponent {
     this.todoService.deleteTodo(id);
   }
 
-  public createTodo(formData: Todo) {
+  public createTodo(formData: CreateTodo) {
     this.todoService.createTodo({
       id: new Date().getTime(),
       title: formData.title,

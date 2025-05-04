@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CreateUser } from './create-user-form.interfase';
 
 @Component({
   selector: 'app-create-user-form',
@@ -16,23 +17,36 @@ import {
 })
 export class CreateUserFormComponent {
   @Output()
-  createUser = new EventEmitter();
-  
+  createUser = new EventEmitter<CreateUser>();
+
   public form = new FormGroup({
-    name: new FormControl('hello world', [
-      Validators.required,
-      Validators.minLength(2),
-    ]),
-    email: new FormControl('email', [Validators.required, Validators.email]),
-    website: new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-    ]),
-    companyName: new FormControl('', Validators.minLength(2)),
+    name: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(2)],
+      nonNullable: true,
+    }),
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+      nonNullable: true,
+    }),
+    website: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(2)],
+      nonNullable: true,
+    }),
+    companyName: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(2)],
+      nonNullable: true,
+    }),
   });
 
   public submitForm() {
-    this.createUser.emit(this.form.value);
-    this.form.reset(); 
+    if (this.form.valid) {
+      this.createUser.emit({
+        name: this.form.value.name!,
+        email: this.form.value.email!,
+        website: this.form.value.website!,
+        companyName: this.form.value.companyName ?? undefined,
+      });
+      this.form.reset();
+    }
   }
 }

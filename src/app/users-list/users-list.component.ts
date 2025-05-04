@@ -11,6 +11,7 @@ import { UsersApiService } from '../users-api.service';
 import { UserCardComponent } from './user-card/user-card.component';
 import { UsersService } from '../users.service';
 import { CreateUserFormComponent } from '../create-user-form/create-user-form.components';
+import { CreateUser } from '../create-user-form/create-user-form.interfase';
 
 @Component({
   selector: 'app-users-list',
@@ -34,7 +35,7 @@ export class UsersListComponent {
     this.userService.deleteUser(id);
   }
 
-  public createUser(formData: User) {
+  public createUser(formData: CreateUser) {
     this.userService.createUser({
       id: new Date().getTime(),
       name: formData.name,
