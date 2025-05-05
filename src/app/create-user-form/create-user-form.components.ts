@@ -15,6 +15,7 @@ import { CreateUser } from './create-user-form.interfase';
   standalone: true,
   imports: [ReactiveFormsModule, NgIf],
 })
+
 export class CreateUserFormComponent {
   @Output()
   createUser = new EventEmitter<CreateUser>();
@@ -40,11 +41,12 @@ export class CreateUserFormComponent {
 
   public submitForm() {
     if (this.form.valid) {
+      const formData = this.form.getRawValue();
       this.createUser.emit({
-        name: this.form.value.name!,
-        email: this.form.value.email!,
-        website: this.form.value.website!,
-        companyName: this.form.value.companyName ?? undefined,
+        name: formData.name,
+        email: formData.email,
+        website: formData.website,
+        companyName: formData.companyName,
       });
       this.form.reset();
     }

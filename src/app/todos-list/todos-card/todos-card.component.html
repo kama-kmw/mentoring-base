@@ -8,7 +8,7 @@
     {{ todo.completed ? "да" : "нет" }}
   </p>
 
-  <button class="task__btn" (click)="onDeleteTodo(todo.id)">
+  <button class="task__btn" (click)="onDeleteTodo(todo.id!)">
     УДАЛИТЬ ЗАДАЧУ
   </button>
 </div>

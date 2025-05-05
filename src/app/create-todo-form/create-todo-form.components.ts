@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CreateTodo } from './create-todo-form.interfase';
+import { Todo } from '../todos-list/todos-list.interface';
 
 @Component({
   selector: 'app-create-todo-form',
@@ -17,7 +17,7 @@ import { CreateTodo } from './create-todo-form.interfase';
 })
 export class CreateTodoFormComponent {
   @Output()
-  createTodo = new EventEmitter<CreateTodo>();
+  createTodo = new EventEmitter<Todo>();
 
   public form = new FormGroup({
     title: new FormControl('', {
@@ -34,9 +34,15 @@ export class CreateTodoFormComponent {
   public submitForm() {
     if (this.form.valid) {
       const formData = this.form.getRawValue();
+
+      if (formData.userId === null) {
+        alert('Поле "Автор задачи" обязательно!');
+        return;
+      }
+
       this.createTodo.emit({
         title: formData.title,
-        userId: Number(this.form.value.userId),
+        userId: formData.userId,
         completed: formData.completed,
       });
       this.form.reset();
