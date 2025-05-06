@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-todo-form',
@@ -26,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     FormsModule,
     MatDialogModule,
+    MatIconModule,
   ],
 })
 export class CreateTodoFormComponent {
