@@ -7,15 +7,29 @@ import {
   Validators,
 } from '@angular/forms';
 import { CreateUser } from './create-user-form.interfase';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-user-form',
   templateUrl: './create-user-form.html',
   styleUrl: './create-user-form.scss',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [
+    ReactiveFormsModule,
+    NgIf,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatDialogModule,
+    MatIconModule,
+  ],
 })
-
 export class CreateUserFormComponent {
   @Output()
   createUser = new EventEmitter<CreateUser>();

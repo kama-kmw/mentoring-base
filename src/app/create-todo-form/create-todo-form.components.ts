@@ -1,9 +1,13 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ValidationErrors } from '@angular/forms'; // Исправленный импорт
+
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { Todo } from '../todos-list/todos-list.interface';
@@ -13,6 +17,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+
+export function completedValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value?.trim().toLowerCase();
+    if (value === 'да' || value === 'нет') {
+      return null;
+    }
+    return { invalidCompleted: true };
+  };
+}
 
 @Component({
   selector: 'app-create-todo-form',
@@ -43,22 +57,26 @@ export class CreateTodoFormComponent {
       validators: [Validators.required, Validators.min(1)],
     }),
 
-    completed: new FormControl(false, { nonNullable: true }),
+    completed: new FormControl('', [Validators.required, completedValidator()]),
   });
+
+  private getComputedValue(): boolean {
+    const value = this.form.get('completed')?.value!.trim().toLowerCase();
+    return value === 'да';
+  }
 
   public submitForm() {
     if (this.form.valid) {
-      const formData = this.form.getRawValue();
-
-      if (formData.userId === null) {
+      const userId = this.form.value.userId;
+      if (userId === null || userId === undefined) {
         alert('Поле "Автор задачи" обязательно!');
         return;
       }
 
       this.createTodo.emit({
-        title: formData.title,
-        userId: formData.userId,
-        completed: formData.completed,
+        title: this.form.value.title || '',
+        userId: userId,
+        completed: this.getComputedValue(),
       });
       this.form.reset();
     }

@@ -6,9 +6,13 @@
 }
 
 .form__user {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form__field {
+  width: 100%;
 }
 
 .form__label {

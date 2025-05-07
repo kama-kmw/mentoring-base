@@ -1,27 +1,36 @@
 <h1 class="form__title">Добавить карточку</h1>
 <div class="form-section">
   <form class="form__user" [formGroup]="form" (ngSubmit)="submitForm()">
-    <p class="form__label">NAME</p>
-    <input type="text" class="form__input" formControlName="name" />
-    <div
-      *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
-      class="alert"
-    >
-      <div *ngIf="form.controls['name'].errors" style="color: red">
-        Введите коректное имя
-      </div>
-    </div>
+    <mat-form-field class="form__field">
+      <mat-label>NAME</mat-label>
+      <input matInput class="form__input" formControlName="name" />
+      <mat-error>Введите коректное название!</mat-error>
+    </mat-form-field>
 
-    <p class="form__label">EMAIL</p>
-    <input type="text" class="form__input" formControlName="email" />
+    <mat-form-field class="form__field">
+      <mat-label>EMAIL</mat-label>
+      <input matInput class="form__input" formControlName="email" />
+      @if (form.get('email')?.hasError('email') &&
+      form.get('email')!.hasError('required')) {
+      <mat-error>Пожалуйста введите правильное значение</mat-error>
+      } @if (form.get('email')?.hasError('required')) {
+      <mat-error>Email <strong>обязателен</strong></mat-error>
+      }
+    </mat-form-field>
 
-    <p class="form__label">WEBSITE</p>
-    <input type="text" class="form__input" formControlName="website" />
+    <mat-form-field class="form__field">
+      <mat-label>WEBSITE</mat-label>
+      <input matInput class="form__input" formControlName="website" />
+      <mat-error>Введите коректное название!</mat-error>
+    </mat-form-field>
 
-    <p class="form__label">COMPANY-NAME</p>
-    <input type="text" class="form__input" formControlName="companyName" />
+    <mat-form-field class="form__field">
+      <mat-label>COMPANY-NAME</mat-label>
+      <input matInput class="form__input" formControlName="companyName" />
+      <mat-error>Введите коректное название!</mat-error>
+    </mat-form-field>
 
-    <button type="submit" class="form__btn" [disabled]="form.invalid">
+    <button mat-raised-button [disabled]="form.invalid" class="form__btn">
       CREATE USER
     </button>
   </form>
