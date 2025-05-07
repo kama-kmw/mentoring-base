@@ -1,6 +1,6 @@
 <h1 class="form__title">Добавить карточку</h1>
 <div class="form-section">
-  <form class="form__user" [formGroup]="form" (ngSubmit)="submitForm()">
+  <form class="form__user" [formGroup]="form">
     <mat-form-field class="form__field">
       <mat-label>NAME</mat-label>
       <input matInput class="form__input" formControlName="name" />
@@ -30,7 +30,7 @@
       <mat-error>Введите коректное название!</mat-error>
     </mat-form-field>
 
-    <button mat-raised-button [disabled]="form.invalid" class="form__btn">
+    <button type="submit" mat-raised-button (click)="submitForm()" [disabled]="form.invalid" class="form__btn">
       CREATE USER
     </button>
   </form>
