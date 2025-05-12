@@ -1,0 +1,41 @@
+<div class="form-user">
+  <h2 class="form-user__title">Введите данные пользователя</h2>
+  <form [formGroup]="form" class="form-user__container">
+    <mat-form-field class="form-user__fiield">
+      <mat-label class="form-user__label">Введите имя</mat-label>
+      <input matInput class="form-user__input" formControlName="name" />
+      <mat-error>Введите коректное название!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-user__fiield">
+      <mat-label class="form-user__label">Введите email</mat-label>
+      <input matInput class="form-user__input" formControlName="email" />
+      @if (form.get('email')?.hasError('email') &&
+      form.get('email')!.hasError('required')) {
+      <mat-error>Пожалуйста введите правильное значение</mat-error>
+      } @if (form.get('email')?.hasError('required')) {
+      <mat-error>Email <strong>обязателен</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="form-user__fiield">
+      <mat-label class="form-user__label">Введите название сайта</mat-label>
+      <input matInput class="form-user__input" formControlName="website" />
+      <mat-error>Введите коректное название!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-user__fiield">
+      <mat-label class="form-user__label">Введите название компании</mat-label>
+      <input matInput class="form-user__input" formControlName="companyName" />
+      <mat-error>Введите коректное название!</mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      [disabled]="form.invalid"
+      [mat-dialog-close]="newUsers"
+    >
+      создать карточку
+    </button>
+  </form>
+</div>

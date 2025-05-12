@@ -1,10 +1,18 @@
 <div class="card__item">
-  <h1>Карточки</h1>
+  <h1>Пользователь</h1>
   <h4 class="card__title">{{ user.name }}</h4>
   <p class="card___desc">{{ user.email }}</p>
   <p class="card___user-name">{{ user.website }}</p>
   <p class="card__street">{{ user.company.name }}</p>
-  <button class="card__btn" (click)="onDeleteUser(user.id)">
-    Удалить юзера
-  </button>
+
+  <div class="card__actions">
+    <button
+      class="card__btn-delete"
+      mat-raised-button
+      (click)="openDeleteConfirmationDialog()"
+    >
+      Удалить
+    </button>
+    <button class="card__btn-edit" mat-raised-button (click)="openDialog()">Редактировать</button>
+  </div>
 </div>

@@ -1,13 +1,9 @@
-.form__title {
-  margin-left: 20px;
-}
 .form-section {
   padding: 20px;
 }
 
 .form__user {
-  min-width: 150px;
-  max-width: 500px;
+  max-width: 400px;
   width: 100%;
 }
 
@@ -20,12 +16,7 @@
 }
 
 .form__input {
-  width: 200px;
-  border: 1px solid #111;
-}
-
-.gustom-select {
-  width: 200px;
+  width: 100%;
 }
 
 .form__btn {

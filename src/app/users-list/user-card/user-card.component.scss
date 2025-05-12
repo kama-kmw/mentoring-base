@@ -1,6 +1,6 @@
 .card__item {
-  width: 250px;
-  height: 300px;
+  width: 320px;
+  height: 370px;
   background: #ffffff;
   box-sizing: border-box;
   padding: 16px;
@@ -20,10 +20,24 @@
   color: gray;
 }
 
-.card__btn {
-  height: 50px;
-  border-radius: 30px;
-  border: 1px solid #f0ba4e;
-  background: none;
-  padding: 10px 20px;
+.card__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+}
+
+.card__btn-delete {
+  background-color: #ff6b6b;
+  color: #ffffff;
+  &:hover {
+    background-color: #ff5252;
+  }
+}
+
+.card__btn-edit {
+  background-color: #4dabf7;
+  color: #ffffff;
+  &:hover {
+    background-color: #339af0;
+  }
 }

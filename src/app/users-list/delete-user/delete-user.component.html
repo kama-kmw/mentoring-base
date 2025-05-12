@@ -1,0 +1,24 @@
+<div class="confirm-dialog">
+  <h2 class="confirm-dialog__title" mat-dialog-title>Удаление пользователя</h2>
+  <mat-dialog-content class="confirm-dialog__content">
+    Удалить пользователя {{ data.userName }}?
+  </mat-dialog-content>
+  <mat-dialog-actions class="confirm-dialog__actions">
+    <button
+      mat-button
+      [mat-dialog-close]="{ delete: true, userId: data.userId }"
+      cdkFocusInitial
+      color="confirm-dialog__button confirm-dialog__button--confirm"
+    >
+      да
+    </button>
+
+    <button
+      mat-button
+      [mat-dialog-close]="{ delete: false }"
+      class="confirm-dialog__button confirm-dialog__button--cancel"
+    >
+      нет
+    </button>
+  </mat-dialog-actions>
+</div>
