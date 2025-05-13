@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ValidationErrors } from '@angular/forms'; // Исправленный импорт
+import { ValidationErrors } from '@angular/forms';
 
 import {
   AbstractControl,
@@ -44,7 +44,7 @@ export function completedValidator(): ValidatorFn {
     MatIconModule,
   ],
 })
-export class CreateTodoFormComponent {
+export class CreateTodoDialogComponent {
   @Output()
   createTodo = new EventEmitter<Todo>();
 
@@ -65,20 +65,32 @@ export class CreateTodoFormComponent {
     return value === 'да';
   }
 
-  public submitForm() {
-    if (this.form.valid) {
-      const userId = this.form.value.userId;
-      if (userId === null || userId === undefined) {
-        alert('Поле "Автор задачи" обязательно!');
-        return;
-      }
+  get newTodos(): Todo | null {
+    const formValue = this.form.value;
 
-      this.createTodo.emit({
-        title: this.form.value.title || '',
-        userId: userId,
-        completed: this.getComputedValue(),
-      });
-      this.form.reset();
+    // Проверка на наличие userId
+    if (!formValue.userId) {
+      return null; // Если нет userId, возвращаем null
     }
+
+    return {
+      title: formValue.title ?? '',
+      userId: formValue.userId,
+      completed: this.getComputedValue(),
+    };
+  }
+
+  public submitForm(): void {
+    if (this.form.invalid) {
+      console.log('Форма невалидна');
+      return; // Не отправляем данные, если форма невалидна
+    }
+
+    // Эмитируем событие с новой задачей
+    const todo: Todo = this.newTodos!;
+    this.createTodo.emit(todo);
+
+    // Сбрасываем форму после отправки
+    this.form.reset();
   }
 }

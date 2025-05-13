@@ -1,35 +1,30 @@
-.form__title {
-  margin-left: 20px;
-}
-.form-section {
+.form-todo {
   padding: 20px;
 }
 
-.form__todo {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+.form-todo__title {
+  margin-left: 20px;
 }
 
-.form__field {
+.form-todo__container {
+  max-width: 400px;
   width: 100%;
+  margin-top: 15px;
 }
 
-.form__label {
+.form-todo__field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-todo__label {
   font-weight: 500;
 }
 
-.form__input {
+.form-todo__input {
   width: 200px;
 }
 
-.gustom-select {
-  width: 200px;
-}
-
-.form__btn {
-  width: 200px;
-  padding: 11px 18px;
-  font-weight: 500;
-  cursor: pointer;
+.form-todo__btn {
+  margin-top: 20px;
 }

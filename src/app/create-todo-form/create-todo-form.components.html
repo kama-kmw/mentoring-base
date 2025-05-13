@@ -1,24 +1,31 @@
-<h1 class="form__title">Добавить задачу</h1>
-<div class="form-section">
-  <form [formGroup]="form" class="form__todo">
-    <mat-form-field class="form__field">
+<div class="form-todo">
+  <h2 class="form-todo__title">Добавить задачу</h2>
+  <form [formGroup]="form" class="form-todo__container">
+    <mat-form-field class="form-todo__field">
       <mat-label>Текст задачи</mat-label>
-      <input matInput class="form__input" formControlName="title" />
+      <input matInput class="form-todo__input" formControlName="title" />
       <mat-error>Введите коректное название задачи!</mat-error>
-    </mat-form-field> 
+    </mat-form-field>
 
-    <mat-form-field class="form__field">
+    <mat-form-field class="form-todo__field">
       <mat-label>Автор задачи</mat-label>
-      <input matInput class="form__input" formControlName="userId" />
-      <mat-error>Введите коректное название!</mat-error>
+      <input matInput class="form-todo__input" formControlName="userId" />
+      <mat-error *ngIf="form.get('userId')?.hasError('required')">
+        Поле "Автор задачи" обязательно!
+      </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="form__field">
+    <mat-form-field class="form-todo__field">
       <mat-label>Задача завершена</mat-label>
-      <input matInput class="form__input" formControlName="completed" />
+      <input matInput class="form-todo__input" formControlName="completed" />
     </mat-form-field>
 
-    <button type="submit" (click)="submitForm()" mat-raised-button [disabled]="form.invalid" class="form__btn">
+    <button
+      class="form-todo__btn"
+      mat-raised-button
+      [disabled]="form.invalid"
+      [mat-dialog-close]="newTodos"
+    >
       СОЗДАТЬ ЗАДАЧУ
     </button>
   </form>

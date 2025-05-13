@@ -7,8 +7,16 @@
   <p class="task__boolean">
     {{ todo.completed ? "да" : "нет" }}
   </p>
-
-  <button class="task__btn" (click)="onDeleteTodo(todo.id!)">
-    УДАЛИТЬ ЗАДАЧУ
-  </button>
+  <div class="task__actions">
+    <button
+      class="task__btn-delete"
+      mat-raised-button
+      (click)="openDeleteConfirmationDialog()"
+    >
+      Удалить
+    </button>
+  </div>
 </div>
+<!-- <button class="task__btn" (click)="onDeleteTodo(todo.id!)">
+    УДАЛИТЬ ЗАДАЧУ
+  </button> -->

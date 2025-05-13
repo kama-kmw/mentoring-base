@@ -1,4 +1,12 @@
-<app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form>
+<!-- <app-create-todo-form (createTodo)="createTodo($event)"></app-create-todo-form> -->
+<button
+  type="submit"
+  mat-raised-button
+  (click)="openDialogCreateTodo()"
+  class="create-user__btn"
+>
+  Создать задачу
+</button>
 <section class="card">
   <div class="card-inner">
     <div *ngFor="let todo of todoService.todos$ | async">

@@ -8,7 +8,7 @@ export class TodosService {
   public todos$: Observable<Todo[]> = this.todosSubject.asObservable();
 
   setTodos(todos: Todo[]) {
-    this.todosSubject.next(todos);
+    this.todosSubject.next(todos.slice(0, 10));
   }
 
   editedTodo(editedUser: Todo) {
