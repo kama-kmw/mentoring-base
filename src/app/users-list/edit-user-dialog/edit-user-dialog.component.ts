@@ -32,7 +32,7 @@ import { EditUser } from './edit-user-form.interfase';
     FormsModule,
     MatDialogModule,
     MatIconModule,
-    MatDialogClose, 
+    MatDialogClose,
   ],
 })
 export class EditUserDialogComponent {
@@ -64,9 +64,10 @@ export class EditUserDialogComponent {
       name: formValue.name ?? '',
       email: formValue.email ?? '',
       website: formValue.website ?? '',
-      companyName: formValue.companyName ?? '',
+      company: {
+        name: formValue.companyName ?? '',
+      },
       id: this.data.user.id,
     };
   }
 }
- 
