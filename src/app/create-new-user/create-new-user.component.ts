@@ -50,7 +50,6 @@ export class CreateUserDialogComponent {
     }),
   });
 
-
   get newUsers(): CreateUser {
     const formValue = this.form.value;
 
@@ -58,7 +57,9 @@ export class CreateUserDialogComponent {
       name: formValue.name ?? '',
       email: formValue.email ?? '',
       website: formValue.website ?? '',
-      companyName: formValue.companyName ?? '',
+      company: {
+        name: formValue.companyName ?? '',
+      },
     };
   }
 }

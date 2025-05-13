@@ -87,9 +87,7 @@ export class UsersListComponent {
       name: formData.name,
       email: formData.email,
       website: formData.website,
-      company: {
-        name: formData.companyName,
-      },
+      company: formData.company,
     });
   }
 }
