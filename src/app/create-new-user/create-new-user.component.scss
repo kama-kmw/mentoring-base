@@ -13,6 +13,7 @@
 
 .form-user__fiield {
   width: 100%;
+  margin-top: 15px;
 }
 
 .form-user__label {
@@ -23,9 +24,6 @@
   width: 100%;
 }
 
-.form__btn {
-  width: 200px;
-  padding: 11px 18px;
-  font-weight: 500;
-  cursor: pointer;
+.form-user__btn {
+  margin-top: 20px;
 }
