@@ -4,7 +4,7 @@ import { Todo } from './todos-list.interface';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { TodosCardComponent } from './todos-card/todos-card.component';
 import { TodosService } from '../todos.service';
-import { CreateTodoDialogComponent } from '../create-todo-form/create-todo-form.components';
+import { CreateTodoDialogComponent } from '../create-new-todo/create-new-todo.components';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';

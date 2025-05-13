@@ -30,8 +30,8 @@ export function completedValidator(): ValidatorFn {
 
 @Component({
   selector: 'app-create-todo-form',
-  templateUrl: './create-todo-form.components.html',
-  styleUrl: './create-todo-form.components.scss',
+  templateUrl: './create-new-todo.components.html',
+  styleUrl: './create-new-todo.components.scss',
   standalone: true,
   imports: [
     ReactiveFormsModule,
