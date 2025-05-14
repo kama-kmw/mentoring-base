@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, inject, Injectable } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -20,7 +20,7 @@ const menuElements = [
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, CommonModule],
 })
 export class HeaderComponent {
   readonly headerNavLink1 = 'Главная';
@@ -38,4 +38,6 @@ export class HeaderComponent {
     );
     this.isUpperCase = !this.isUpperCase;
   }
+
+  today: Date = new Date();
 }

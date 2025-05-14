@@ -5,13 +5,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogTodoComponent } from '../delete-todo/delete-todo.component';
 import { MatButtonModule } from '@angular/material/button';
+import { LimitText } from '../../pipes/limit-text.pipe';
 
 @Component({
   selector: 'app-todos-card',
   templateUrl: './todos-card.component.html',
   styleUrl: './todos-card.scss',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, LimitText],
 })
 export class TodosCardComponent {
   @Input()

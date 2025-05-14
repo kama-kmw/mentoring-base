@@ -1,6 +1,6 @@
 <div class="task__item">
   <p>ТЕКСТ ЗАДАЧИ:</p>
-  <p class="task___desc">{{ todo.title }}</p>
+  <p class="task___desc">{{ todo.title | limitText }} </p>
   <p>АВТОР ЗАДАЧИ</p>
   <p class="task___id">{{ todo.userId }}</p>
   <p>ЗАДАЧА ЗАВЕРШЕНА</p>

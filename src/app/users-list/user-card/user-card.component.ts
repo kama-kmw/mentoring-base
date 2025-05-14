@@ -6,13 +6,15 @@ import { EditUser } from '../edit-user-dialog/edit-user-form.interfase';
 import { ConfirmDialogComponent } from '../delete-user/delete-user.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomUpperCasePipe } from '../../pipes/upper-case.pipe';
+import { RemoveDashes } from '../../pipes/remove-dashes.pape';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, CustomUpperCasePipe, RemoveDashes],
 })
 export class UserCardComponent {
   @Input()
