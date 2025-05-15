@@ -8,13 +8,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomUpperCasePipe } from '../../pipes/upper-case.pipe';
 import { RemoveDashes } from '../../pipes/remove-dashes.pape';
+import { AppHoverShadow } from '../../directives/hover-shadow.directive';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
   standalone: true,
-  imports: [MatButtonModule, CustomUpperCasePipe, RemoveDashes],
+  imports: [MatButtonModule, CustomUpperCasePipe, RemoveDashes, AppHoverShadow, MatTooltipModule],
 })
 export class UserCardComponent {
   @Input()

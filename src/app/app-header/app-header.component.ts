@@ -1,6 +1,7 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, inject, Injectable } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { HoverHighlight } from '../directives/hover-highlight.directive';
 
 const showItemMenu = (item: string) => {
   return item;
@@ -20,7 +21,7 @@ const menuElements = [
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss',
   standalone: true,
-  imports: [NgFor, RouterLink, CommonModule],
+  imports: [NgFor, RouterLink, CommonModule, HoverHighlight],
 })
 export class HeaderComponent {
   readonly headerNavLink1 = 'Главная';

@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { User } from '../users-list.interface';
 import { EditUser } from './edit-user-form.interfase';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-edit-user-dialog',
@@ -33,6 +34,7 @@ import { EditUser } from './edit-user-form.interfase';
     MatDialogModule,
     MatIconModule,
     MatDialogClose,
+    MatTooltipModule
   ],
 })
 export class EditUserDialogComponent {

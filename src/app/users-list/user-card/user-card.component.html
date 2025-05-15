@@ -1,4 +1,4 @@
-<div class="card__item">
+<div class="card__item" appHoverShadow>
   <h1>Пользователь</h1>
   <h4 class="card__title">{{ user.name | customUpperCase }}</h4>
   <p class="card___desc">{{ user.email }}</p>
@@ -10,10 +10,20 @@
     <button
       class="card__btn-delete"
       mat-raised-button
+      matTooltip="Удалить пользователя"
+      matTooltipPosition="above"
       (click)="openDeleteConfirmationDialog()"
     >
       Удалить
     </button>
-    <button class="card__btn-edit" mat-raised-button (click)="openDialog()">Редактировать</button>
+    <button
+      class="card__btn-edit"
+      matTooltip="Редактировать пользователя"
+      matTooltipPosition="above"
+      mat-raised-button
+      (click)="openDialog()"
+    >
+      Редактировать
+    </button>
   </div>
 </div>
