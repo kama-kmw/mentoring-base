@@ -7,6 +7,7 @@ import { AuthComponent } from '../auth/auth.component';
 import { UserService } from '../user.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserRole } from '../interface/user-role.interface';
 
 const showItemMenu = (item: string) => {
   return item;
@@ -51,6 +52,15 @@ export class HeaderComponent {
 
   private _snackBar = inject(MatSnackBar);
 
+  private showSnackbar(message: string) {
+    this._snackBar.open(message, 'OK', {
+      duration: 5000,
+      panelClass: ['success-snackbar'],
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
   changeMenuText() {
     this.menuItems = menuElements.map((item) =>
       this.isUpperCase ? item.toLowerCase() : item.toUpperCase()
@@ -67,27 +77,17 @@ export class HeaderComponent {
       if (result === 'admin') {
         this.userService.loginAsAdmin();
 
-        this.userService.users$.subscribe((user) => {
+        this.userService.users$.subscribe((user: UserRole | null) => {
           if (user?.isAdmin) {
             this.router.navigate(['/admin']);
-            this._snackBar.open(`Вход администратора`, 'OK', {
-              duration: 5000,
-              panelClass: ['success-snackbar'],
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom',
-            });
+            this.showSnackbar('Вход администратора');
           }
         });
       } else if (result === 'user') {
         this.userService.loginAsUser();
         this.router.navigate(['/todos']);
-        this._snackBar.open(`Вход пользователя`, 'OK', {
-          duration: 5000,
-          panelClass: ['success-snackbar'],
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-        });
-      } else return undefined;
+        this.showSnackbar('Вход пользователя');
+      }
     });
   }
 
