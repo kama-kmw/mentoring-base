@@ -1,0 +1,19 @@
+.auth-container {
+  width: 400px;
+  height: 150px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.auth-actions {
+  display: flex;
+  column-gap: 20px;
+  margin-top: 30px;
+}
+
+.auth-actions__btn {
+  background: #e8aa0e;
+}

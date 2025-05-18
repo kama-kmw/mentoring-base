@@ -23,15 +23,22 @@
                 headerNavLink3
               }}</a>
             </li>
+
             <li class="navbar-menu__item">
               <a href="" class="navbar-menu__link" routerLink="/todos">Todo</a>
+            </li>
+
+            <li class="navbar-menu__item">
+              <a href="" class="navbar-menu__link" routerLink="/admin"
+                >Админка</a
+              >
             </li>
           </ul>
         </nav>
 
         <div class="header-actions">
           <p class="header-actions__date">{{ today | date : "medium" }}</p>
-          
+
           <a href="tel:+79650842929" class="header-actions__phone-link">
             <img src="../assets/icons/phone-icon.svg" alt="" />
             <span class="header-actions__phone-number">+7 (965) 084-29-29</span>
@@ -45,6 +52,23 @@
             <img src="../assets/icons/basket-icon.svg" alt="" />
             <span>Пусто</span>
           </a>
+
+          <button
+            class="header-actions__btn"
+            mat-raised-button
+            (click)="openDialog()"
+            *ngIf="(userService.users$ | async) === null"
+          >
+            Войти
+          </button>
+          <button
+            mat-raised-button
+            class="header-actions__btn"
+            (click)="logout()"
+            *ngIf="(userService.users$ | async) !== null"
+          >
+            Выйти
+          </button>
         </div>
       </div>
     </div>

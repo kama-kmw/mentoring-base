@@ -1,7 +1,12 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, inject, Injectable } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HoverHighlight } from '../directives/hover-highlight.directive';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthComponent } from '../auth/auth.component';
+import { UserService } from '../user.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const showItemMenu = (item: string) => {
   return item;
@@ -21,7 +26,15 @@ const menuElements = [
   templateUrl: './app-header.component.html',
   styleUrl: './app-header.component.scss',
   standalone: true,
-  imports: [NgFor, RouterLink, CommonModule, HoverHighlight],
+  imports: [
+    NgFor,
+    NgIf,
+    RouterLink,
+    CommonModule,
+    HoverHighlight,
+    AsyncPipe,
+    MatButtonModule,
+  ],
 })
 export class HeaderComponent {
   readonly headerNavLink1 = 'Главная';
@@ -32,6 +45,11 @@ export class HeaderComponent {
   menuItems = menuElements;
 
   isUpperCase = true;
+  private readonly dialog = inject(MatDialog);
+  public readonly userService = inject(UserService);
+  private readonly router = inject(Router);
+
+  private _snackBar = inject(MatSnackBar);
 
   changeMenuText() {
     this.menuItems = menuElements.map((item) =>
@@ -41,4 +59,43 @@ export class HeaderComponent {
   }
 
   today: Date = new Date();
+
+  public openDialog(): void {
+    const dialogRef = this.dialog.open(AuthComponent, {});
+
+    dialogRef.afterClosed().subscribe((result: string) => {
+      if (result === 'admin') {
+        this.userService.loginAsAdmin();
+
+        this.userService.users$.subscribe((user) => {
+          if (user?.isAdmin) {
+            this.router.navigate(['/admin']);
+            this._snackBar.open(`Вход администратора`, 'OK', {
+              duration: 5000,
+              panelClass: ['success-snackbar'],
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+          }
+        });
+      } else if (result === 'user') {
+        this.userService.loginAsUser();
+        this.router.navigate(['/todos']);
+        this._snackBar.open(`Вход пользователя`, 'OK', {
+          duration: 5000,
+          panelClass: ['success-snackbar'],
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      } else return undefined;
+    });
+  }
+
+  public logout() {
+    if (confirm('Вы точно хотите выйти')) {
+      return this.userService.logout();
+    } else {
+      return false;
+    }
+  }
 }
