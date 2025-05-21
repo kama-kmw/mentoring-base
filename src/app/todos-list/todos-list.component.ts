@@ -3,13 +3,15 @@ import { TodosApiService } from '../todos-api.service';
 import { Todo } from './todos-list.interface';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { TodosCardComponent } from './todos-card/todos-card.component';
-import { TodosService } from '../todos.service';
 import { CreateTodoDialogComponent } from '../create-new-todo/create-new-todo.components';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Store } from '@ngrx/store';
+import { selectTodos } from '../todos-list/store/todos.selectors';
+import { TodoActions } from '../todos-list/store/todo.actions';
 
 @Component({
   selector: 'app-todos-list',
@@ -28,14 +30,15 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class TodosListComponent {
   readonly todosApiService = inject(TodosApiService);
-  readonly todoService = inject(TodosService);
+  private readonly store = inject(Store);
+  public readonly todos$ = this.store.select(selectTodos);
 
   readonly dialog = inject(MatDialog);
   private _snackBar = inject(MatSnackBar);
 
   constructor() {
     this.todosApiService.getTodos().subscribe((response: Todo[]) => {
-      this.todoService.setTodos(response);
+      this.store.dispatch(TodoActions.set({ todos: response }));
     });
   }
   openDialogCreateTodo() {
@@ -55,15 +58,19 @@ export class TodosListComponent {
   }
 
   deleteTodo(id: number) {
-    this.todoService.deleteTodo(id);
+    this.store.dispatch(TodoActions.delete({ id }));
   }
 
   public createTodo(formData: Todo) {
-    this.todoService.createTodo({
-      id: new Date().getTime(),
-      title: formData.title,
-      userId: formData.userId,
-      completed: formData.completed,
-    });
+    this.store.dispatch(
+      TodoActions.create({
+        todo: {
+          id: new Date().getTime(),
+          title: formData.title,
+          userId: formData.userId,
+          completed: formData.completed,
+        },
+      })
+    );
   }
 }

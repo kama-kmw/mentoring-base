@@ -9,7 +9,7 @@
 
 <section class="card">
   <div class="card-inner">
-    <div *ngFor="let user of userService.users$ | async">
+    <div *ngFor="let user of users$ | async">
       <app-user-card
         [user]="user"
         (deleteUser)="deleteUser($event)"
