@@ -10,6 +10,6 @@ export class TodosApiService {
   getTodos() {
     return this.apiService
       .get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
-      .pipe(map((todos) => todos.slice(0, 10)));
+      .pipe(map((todos: Todo[]) => todos.slice(0, 10)));
   }
 }

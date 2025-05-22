@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserActions } from './user.actions';
 import { UsersApiService } from '../../users-api.service';
-import { map, switchMap } from 'rxjs/operators';
+import { concatMap, map, switchMap } from 'rxjs/operators';
+import { User } from '../users-list.interface';
 
 @Injectable()
 export class UserEffects {
@@ -13,11 +14,13 @@ export class UserEffects {
 
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserActions.load),        // Слушаем экшен load
-      switchMap(() =>                  // Когда он пришел, делаем запрос к серверу
-        this.usersApiService.getUsers().pipe(
-          map(users => UserActions.set({ users }))  // Когда получили — диспатчим set с пользователями
-        )
+      ofType(UserActions.load), // Слушаем экшен load
+      concatMap(
+        () =>
+          // Когда он пришел, делаем запрос к серверу
+          this.usersApiService
+            .getUsers()
+            .pipe(map((users: User[]) => UserActions.set({ users }))) // Когда получили — диспатчим set с пользователями
       )
     )
   );

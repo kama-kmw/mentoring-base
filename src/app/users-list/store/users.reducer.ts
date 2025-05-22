@@ -14,12 +14,8 @@ export const userReducer = createReducer(
   })),
   on(UserActions.edit, (state, payload) => ({
     ...state,
-    users: state.users.map((user) => {
-      if (user.id === payload.user.id) {
-        return payload.user;
-      } else {
-        return user;
-      }
+    users: state.users.map((user: User) => {
+      return user.id === payload.user.id ? payload.user : user;
     }),
   })),
 
@@ -28,8 +24,8 @@ export const userReducer = createReducer(
     users: [...state.users, payload.user],
   })),
 
-  on(UserActions.delete, (state, payload) => ({
+  on(UserActions.delete, (state, payload: { id: number }) => ({
     ...state,
-    users: state.users.filter((user) => user.id !== payload.id),
+    users: state.users.filter((user: User) => user.id !== payload.id),
   }))
 );
