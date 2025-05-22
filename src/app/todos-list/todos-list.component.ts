@@ -37,9 +37,7 @@ export class TodosListComponent {
   private _snackBar = inject(MatSnackBar);
 
   constructor() {
-    this.todosApiService.getTodos().subscribe((response: Todo[]) => {
-      this.store.dispatch(TodoActions.set({ todos: response }));
-    });
+    this.store.dispatch(TodoActions.load());
   }
   openDialogCreateTodo() {
     const dialogRef = this.dialog.open(CreateTodoDialogComponent, {});

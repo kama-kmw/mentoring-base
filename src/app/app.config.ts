@@ -11,6 +11,11 @@ import { userReducer } from './users-list/store/users.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { todoReducer } from './todos-list/store/todos.reducer';
 
+import { provideEffects } from '@ngrx/effects';
+import { UserEffects } from './users-list/store/user.effects';
+import { TodoEffects } from './todos-list/store/todos.effects';
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
@@ -24,8 +29,11 @@ export const appConfig: ApplicationConfig = {
     },
     provideStore({
       users: userReducer,
-      todos: todoReducer
+      todos: todoReducer,
     }),
+
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    
+    provideEffects(UserEffects, TodoEffects),
   ],
 };

@@ -45,9 +45,7 @@ export class UsersListComponent {
   public readonly users$ = this.store.select(selectUsers);
 
   constructor() {
-    this.usersApiService.getUsers().subscribe((response: User[]) => {
-      this.store.dispatch(UserActions.set({ users: response }));
-    });
+    this.store.dispatch(UserActions.load());
   }
 
   @Output()
